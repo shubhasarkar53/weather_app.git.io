@@ -129,7 +129,7 @@ async function fetchSearchWeatherInfo(city){ /*Checked */
         console.log("api call done") ;
         const data = await response.json();
         if (data.cod === '404') {
-            window.location.href = '/error.html';
+            window.location.href = 'error.html';
             return;
           }
         console.log("json done done") ;
@@ -240,7 +240,7 @@ async function fetchWeatherInfo(coordinate){  /*Checked */
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIkey}&units=metric`);
         const data = await response.json();
         if (data.cod === '404') {
-            window.location.href = '/error.html';
+            window.location.href = 'error.html';
             return;
         }
         loadingScreen.classList.remove("active");
@@ -257,7 +257,7 @@ async function fetchWeatherInfo(coordinate){  /*Checked */
 
 function errorSwitchTab(error){
     console.error(error);
-    window.location.href ="/error.html";
+    window.location.href ="error.html";
 }
 
 
