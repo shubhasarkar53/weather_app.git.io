@@ -9,8 +9,10 @@
 </head>
 <body>
     <div id="wrapper">
+        
+
         <div class="container">
-            <h1>WEATHER APP</h1>
+            <h1>WEATHER <span>APP</span></h1>
             <div class="tab-container">
                 <div class="tab" user-tab>Your Weather</div>
                 <div class="tab" search-tab>Search Weather</div>
@@ -18,7 +20,7 @@
             <div class="weather-container">
 
                 <!-- Grant Location section -->
-                <div class="grant-location-container  ">
+                <div class="grant-location-container  for-center">
                     <img src="./img/location png.png" width="50px" height="50px">
                     <h2>Grant Location Access</h2>
                     <p>Allow access to get weather information</p>
@@ -28,7 +30,7 @@
 
                 <!-- Search Weather section -->
 
-                <form  class="form-container  "  data-search-form>
+                <form  class="form-container for-center"  data-search-form>
                     <input type="text" data-search-input placeholder="Search for city">
                     <Button search-btn class="btn" type="submit">
                         <img src="./img/search.png" alt="" width="30px" height="30px">
@@ -37,46 +39,51 @@
 
 
                 <!-- Loading Screen section -->
-                <div class="loading-screen-container  ">
+                <div class="loading-screen-container  for-center ">
                     <img src="./img/loading gif.gif" alt="Loading please wait!">
                     <p>Loading....</p>
                 </div>
 
                 <!-- //common section -->
 
-                <div class="current-user-weather">    <!--common-weather-section-->
-                    <div data-placeName></div>
-                    <div data-weather-des></div>
-                    <div data-weather-icon></div>
-                    <h2 data-temp></h2>
+                <div class="current-user-weather for-center">    <!--common-weather-section-->
+                    <div class="city-name-container">
+                        <div id="cityNamePara" data-placeName></div>
+                        <img id="country-flag" data-img-flag >
+                    </div>
+                    <div id="weatherDes" data-weather-des></div>
+                    <img id="weatherIcon" data-weather-icon>
+                    <h2  id="temPara" data-temp></h2>
                     <div class="weather-extra-info-container">
                         <div class="cards">
-                            <img src="./img/wind png.png" width="30px" height="30px">
+                            <img src="./img/wind png.png" >
                             <p>WINDSPEED</p>
                             <p data-windspeed></p>
                         </div>
 
                         <div class="cards">
-                            <img src="./img/humidity.png" width="30px" height="30px">
+                            <img src="./img/humidity.png" >
                             <p>HUMIDITY</p>
                             <p data-humidity></p>
                         </div>
 
                         <div class="cards">
-                            <img src="./img/cloud.png" width="30px" height="30px">
+                            <img src="./img/cloud.png">
                             <p>CLOUDS</p>
                             <p data-clouds></p>
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
+       
+    
+       
         
 
     </div>
     
-
     <script src="logic.js"></script>
 </body>
 </html>

@@ -1,13 +1,17 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
 /* js classes */
-.current-tab{
+/* .current-tab{
     border: 2px solid red;
 }
 
 .active{
     background-color: aqua;
-}
+} */
 
-.grant-location-container{
+/* .grant-location-container{
     border: 2px solid rgb(0, 255, 200);
 }
 
@@ -19,4 +23,260 @@
 }
 .current-user-weather{
     border: 2px solid rgb(255, 0, 208);
+} */
+
+
+
+*,*::after,*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --PRIMARY-TEXT-COLOR: #0a2348;
+    --SECONDARY-TEXT-COLOR: #fff;
+    --PRIMARY-BG-COLOR: #0a2348;
+    --SECONDARY-BG-COLOR: #f3f7f7;
+    --LIGHT-BG-COLOR: #fff;
+    --SMALL-TEXT: 14px;
+    --LETTER-SPACING: 0.8px;
+    --LIGHT-TEXT: #f4f4f4;
+    --STANDERED-PADDING: 30px 40px;
+    --STANDERED-RADIUS: 20px;
+    --STANDERED-width: 60%;
+}
+
+
+.for-center{
+    max-width: var(--STANDERED-width);
+    margin: 0 auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container.deactive{
+    display: none;
+}
+
+.container{
+    /* border: 2px solid green; */
+     /* max-width: ;  */
+     display: flex;
+     flex-direction: column;
+     width: 60%;
+     margin: 0 auto;
+} 
+.container h1{
+    text-align: center;
+    padding: 0.75em 0;
+    color: var(--PRIMARY-TEXT-COLOR);
+}
+.tab-container{
+    /* border: 2px solid orange; */
+    display: flex;
+    width: var(--STANDERED-width);
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding-bottom: 4em;
+    /* border: 2px solid orange; */
+    
+}
+.tab{
+    background-color:var(--SECONDARY-BG-COLOR);
+    padding: 0.5em 0.75em;
+    border-radius: var(--STANDERED-RADIUS);
+    color: var(--PRIMARY-TEXT-COLOR);
+}
+.tab.current-tab{
+    border: 1px solid var(--PRIMARY-BG-COLOR);
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.07), -2px -2px 10px rgba(0, 0, 0, 0.075);
+}
+
+
+/* *********************************** */
+/* GRANT LOCATION CONTAINER STYLES */
+/* *********************************** */
+.grant-location-container{
+    display: none;
+}
+.grant-location-container.active{
+    /* border: 2px solid orange; */
+    display: flex;
+    gap: .3em;
+    padding-block: 2.5em;
+    background:linear-gradient(135deg, rgba(236, 255, 253, 1) 0%, rgba(37, 209, 191, 1) 100%);
+    color: var(--PRIMARY-TEXT-COLOR);
+    border-radius: var(--STANDERED-RADIUS);
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.2), -2px -2px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+.grant-location-container p{
+    font-size: 0.80rem;
+    font-weight: 300;
+    margin-bottom: 1em;
+}
+.btn{
+    all: unset;
+    font-weight: 300;
+    backdrop-filter: blur(100px) saturate(180%);
+    /* -webkit-backdrop-filter: blur(16px) saturate(180%); */
+    background-color: rgba(255, 255, 255, 0.562);
+    padding: 0.3em 2em;
+    border-radius: 10px;
+
+}
+.btn:hover{
+    background-color: rgba(255, 255, 255, 0.697);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+
+/* *********************************** */
+/* FORM CONTAINER STYLES */
+/* *********************************** */
+
+.form-container{
+    display: none;
+}
+.form-container.active{
+    /* border: 2px solid rgb(0, 247, 255); */
+   display: flex;
+   flex-direction: row;
+   justify-content: space-evenly;
+}
+.form-container input{
+    all: unset;
+    width: 81%;
+    padding: 0.75em;
+    background-color: var(--SECONDARY-BG-COLOR);
+    border-radius: 30px 5px 0px 0px ;
+    padding-left: 2em;
+
+}
+.form-container button{
+    /* border: 2px solid red; */
+    background-color: var(--SECONDARY-BG-COLOR);
+    border-radius: 0px 0px 30px 5px;
+}
+
+/* *********************************** */
+/* LOADING SCREEN */
+/* *********************************** */
+
+.loading-screen-container{
+    display: none;
+}
+.loading-screen-container.active{
+    display: flex;
+}
+.loading-screen-container p{
+   padding-block: 1em;
+   font-size: 0.9rem;
+   font-weight: 500;
+}
+
+/* *********************************** */
+/* WEATHER INFO SCREEN */
+/* *********************************** */
+
+.current-user-weather{
+    display: none;
+}
+.current-user-weather.active{
+    margin-top: 2em;
+    overflow: hidden;
+    /* border: 2px solid red; */
+    display: flex;
+    background: url(./img/1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    color: var(--PRIMARY-TEXT-COLOR);
+    padding: 3em;
+    border-radius: var(--STANDERED-RADIUS);
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.2), -2px -2px 10px rgba(0, 0, 0, 0.2);
+
+}
+
+.city-name-container{
+    display: flex;
+    min-width: 45%;
+    width: 47%;
+    justify-content: center;
+    align-items: center;
+}
+#country-flag{
+    width: 50px;
+    max-width:50px;
+    margin-left: 0.5em;
+}
+#cityNamePara{
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: white;
+}
+#weatherDes{
+    color: white;
+}
+#temPara{
+    font-size: 2rem;
+}
+.weather-extra-info-container{
+
+    margin-top: 5em;
+    width: 100%;
+    /* border: 2px solid aqua; */
+    display: flex;
+    /* flex-wrap: wrap; */
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+.weather-extra-info-container img{
+    width: 50px;
+
+}
+.cards{
+    /* border: 1px solid blueviolet; */
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    min-width: 30%;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--SECONDARY-BG-COLOR);
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.2), -2px -2px 10px rgba(0, 0, 0, 0.2);
+    border-radius: var(--STANDERED-RADIUS);
+    color: var(--PRIMARY-TEXT-COLOR);
+    font-weight: 300;
+}
+
+/* ********************************** */
+/* ERROR HANDLING PAGE */
+/* ********************************** */
+
+.error-page{
+    border: 2px solid red;
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: var(--PRIMARY-TEXT-COLOR);
+}
+
+.error-page p{
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 1em;
 }

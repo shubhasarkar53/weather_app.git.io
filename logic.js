@@ -1,3 +1,4 @@
+const mainContainer = document.querySelector(".container");
 const userTab = document.querySelector("[user-tab]");
 const searchTab = document.querySelector("[search-tab]");
 
@@ -10,6 +11,13 @@ const currentWeatherContainer=document.querySelector(".current-user-weather");
 const loadingScreen = document.querySelector(".loading-screen-container");
 
 const btnGrantAccess = document.querySelector("[btn-grant-access]");
+
+const errorPage = document.querySelector("[data-error]");
+console.log(errorPage);
+
+// https://openweathermap.org/img/wn/10d@2x.png
+
+
 
 
 // console.log(btnGrantAccess);
@@ -45,7 +53,9 @@ function switchTab(clickedTab){    /*Checked */
 
     }
 }
-    
+
+
+
 
 userTab.addEventListener("click", () =>{  /*Checked */
     switchTab(userTab);
@@ -76,7 +86,7 @@ searchTab.addEventListener("click", () =>{  /*Checked */
 
 function getFromSessionStorage(){ /*Checked */
     const localCoordinates = sessionStorage.getItem("userCoordinates");
-    console.log("under getFromSessionStorage")
+    console.log("under getFromSessionStorage");
     if (!localCoordinates) {
         grantLocationContainer.classList.add("active");
     }
@@ -87,13 +97,8 @@ function getFromSessionStorage(){ /*Checked */
 }
 
 
-
-
-
-
-
 // const searchForm = document.querySelector("[data-search-form]");
-const dataSearchInput = document.querySelector("[data-search-input]"); /*Checked */
+const dataSearchInput = document.querySelector("[data-search-input]");  /*Checked */
 
 searchForm.addEventListener("submit",(e)=>{ /*Checked */
      console.log(dataSearchInput.value) ;
@@ -123,15 +128,23 @@ async function fetchSearchWeatherInfo(city){ /*Checked */
         
         console.log("api call done") ;
         const data = await response.json();
+        if (data.cod === '404') {
+            window.location.href = '/error.html';
+            return;
+          }
         console.log("json done done") ;
         loadingScreen.classList.remove("active");
         currentWeatherContainer.classList.add("active");
         console.log("active kahini done") ;
         console.log(data);
         renderOnUI(data);
-    } catch (error) {
-        console.log("Something went wrong");
     }
+      catch (error) {
+
+        errorSwitchTab(error)
+        
+      }
+      
 }
 
 
@@ -143,7 +156,8 @@ function grantAccessUserLocation(){  /*Checked */
         navigator.geolocation.getCurrentPosition(showPosition);
     }
     else{
-        console.log("geolocation not avaulable");
+        // errorSwitchTab(error);
+        console.log("loaction not found");
     }
 }
 
@@ -164,19 +178,13 @@ function showPosition(position){ /*Checked */
 
       } else {
         // Sorry! No Web Storage support..
+        // errorSwitchTab(error);
         console.log("Sorry! No Web Storage support..");
       }
 
 }
 
-
-
-
-
-
 btnGrantAccess.addEventListener("click",grantAccessUserLocation); /*Checked */
-
-
 
 // function grantAccessUserLocation(){
 //     grantLocationContainer.classList.add("active");
@@ -230,16 +238,26 @@ async function fetchWeatherInfo(coordinate){  /*Checked */
     // console.log(`${lat} ${lon} ${APIkey}`);
     try {
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIkey}&units=metric`);
-        
         const data = await response.json();
+        if (data.cod === '404') {
+            window.location.href = '/error.html';
+            return;
+        }
         loadingScreen.classList.remove("active");
         currentWeatherContainer.classList.add("active");
         renderOnUI(data); 
 
     } catch (error) {
-        console.log("error occured");
+        // errorSwitchTab(error);
+        console.log("dkdms");
     }
     
+}
+
+
+function errorSwitchTab(error){
+    console.error(error);
+    window.location.href ="/error.html";
 }
 
 
@@ -256,10 +274,14 @@ function renderOnUI(userWeatherdata){ /*Checked */
     const windSpeed = document.querySelector("[data-windspeed]");
     const humidity = document.querySelector("[data-humidity]");
     const clouds = document.querySelector("[data-clouds]");
+    const flagImg = document.querySelector("[data-img-flag]");
+
+    // `https://flagcdn.com/${countryCode.toLowerCase()}.svg`
 
     cityName.innerText = userWeatherdata?.name;
+    flagImg.src = `https://flagcdn.com/${userWeatherdata?.sys?.country.toLowerCase()}.svg`
     weatherDes.innerText = userWeatherdata?.weather?.[0].description;
-    // weatherIcon.innerText = userWeatherdata?.weather?.[0].description;
+    weatherIcon.src = `https://openweathermap.org/img/wn/${userWeatherdata.weather?.[0]?.icon}@2x.png`;
     cityTemp.innerText = `${userWeatherdata?.main?.temp} °C`;
     windSpeed.innerText = `${userWeatherdata?.wind?.speed} m/s`;
     humidity.innerText = `${userWeatherdata?.main?.humidity} %`;
