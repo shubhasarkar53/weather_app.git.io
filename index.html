@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Weather App</title>
+</head>
+<body>
+    <div id="wrapper">
+        <div class="container">
+            <h1>WEATHER APP</h1>
+            <div class="tab-container">
+                <div class="tab" user-tab>Your Weather</div>
+                <div class="tab" search-tab>Search Weather</div>
+            </div>
+            <div class="weather-container">
+
+                <!-- Grant Location section -->
+                <div class="grant-location-container  ">
+                    <img src="./img/location png.png" width="50px" height="50px">
+                    <h2>Grant Location Access</h2>
+                    <p>Allow access to get weather information</p>
+                    <button class="btn" btn-grant-access>GRANT ACCESS</button>
+                </div>
+
+
+                <!-- Search Weather section -->
+
+                <form  class="form-container  "  data-search-form>
+                    <input type="text" data-search-input placeholder="Search for city">
+                    <Button search-btn class="btn" type="submit">
+                        <img src="./img/search.png" alt="" width="30px" height="30px">
+                    </Button>
+                </form>
+
+
+                <!-- Loading Screen section -->
+                <div class="loading-screen-container  ">
+                    <img src="./img/loading gif.gif" alt="Loading please wait!">
+                    <p>Loading....</p>
+                </div>
+
+                <!-- //common section -->
+
+                <div class="current-user-weather">    <!--common-weather-section-->
+                    <div data-placeName></div>
+                    <div data-weather-des></div>
+                    <div data-weather-icon></div>
+                    <h2 data-temp></h2>
+                    <div class="weather-extra-info-container">
+                        <div class="cards">
+                            <img src="./img/wind png.png" width="30px" height="30px">
+                            <p>WINDSPEED</p>
+                            <p data-windspeed></p>
+                        </div>
+
+                        <div class="cards">
+                            <img src="./img/humidity.png" width="30px" height="30px">
+                            <p>HUMIDITY</p>
+                            <p data-humidity></p>
+                        </div>
+
+                        <div class="cards">
+                            <img src="./img/cloud.png" width="30px" height="30px">
+                            <p>CLOUDS</p>
+                            <p data-clouds></p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+    </div>
+    
+
+    <script src="logic.js"></script>
+</body>
+</html>

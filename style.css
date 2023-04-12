@@ -1,0 +1,22 @@
+/* js classes */
+.current-tab{
+    border: 2px solid red;
+}
+
+.active{
+    background-color: aqua;
+}
+
+.grant-location-container{
+    border: 2px solid rgb(0, 255, 200);
+}
+
+.form-container{
+    border: 2px solid rgb(0, 255, 4);
+}
+.loading-screen-container{
+    border: 2px solid rgb(0, 81, 255);
+}
+.current-user-weather{
+    border: 2px solid rgb(255, 0, 208);
+}
